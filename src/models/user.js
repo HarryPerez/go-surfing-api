@@ -22,6 +22,18 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  profile: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  latitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  longitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 module.exports = User;
