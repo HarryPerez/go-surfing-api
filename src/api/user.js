@@ -32,4 +32,18 @@ router.post('/auth/user/location', async (req, res) => {
   res.json(req.user);
 });
 
+router.get('/auth/user/surfers', async (req, res) => {
+  const allSurfers = await User.findAll(
+    { where: { profile: 'surfer' } }
+  );
+  res.json(allSurfers);
+});
+
+router.get('/auth/user/coaches', async (req, res) => {
+  const allSurfers = await User.findAll(
+    { where: { profile: 'coach' } }
+  );
+  res.json(allSurfers);
+});
+
 module.exports = router;
