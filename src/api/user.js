@@ -46,4 +46,16 @@ router.get('/auth/user/coaches', async (req, res) => {
   res.json(allSurfers);
 });
 
+router.post('/auth/user/extrainfo', async (req, res) => {
+  const { user, phone, description } = req.body;
+  const { email } = user;
+
+  await User.update(
+    { phone, description },
+    { where: { email } }
+  );
+
+  res.json(user);
+});
+
 module.exports = router;
