@@ -23,6 +23,8 @@ passport.use(
         phone: profile.phone
       };
 
+      console.log('ACA, SE SALIO', profile);
+
       const user = await User.findOrCreate({
         where: { googleId: profile.id },
         defaults: defaultUser,
