@@ -29,9 +29,7 @@ app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY],
-    secure: true,
-    proxy: true,
-    sameSite: 'none',
+    httpOnly: false,
   })
 );
 
