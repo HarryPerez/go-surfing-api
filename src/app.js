@@ -22,19 +22,13 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors({ origin: 'https://go-surfing-ui.herokuapp.com:3000', credentials: true }));
+app.use(cors({ origin: process.env.CORS_ALLOWED_ORIGIN, credentials: true }));
 app.use(express.json());
 
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_KEY],
-    httpOnly: false,
-    sameSite: 'none',
-    cookie: {
-      secure: true,
-      sameSite: 'None'
-    }
+    keys: [process.env.COOKIE_KEY]
   })
 );
 
