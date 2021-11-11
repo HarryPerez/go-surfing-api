@@ -20,6 +20,7 @@ passport.use(
         email: profile.emails[0].value,
         picture: profile.photos[0].value,
         googleId: profile.id,
+        phone: profile.phone
       };
 
       const user = await User.findOrCreate({

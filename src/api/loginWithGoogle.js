@@ -1,6 +1,5 @@
 const express = require('express');
 const passport = require('passport');
-const { isUserAuthenticated } = require('../middlewares/auth');
 
 const router = express.Router();
 
@@ -9,7 +8,7 @@ const errorLoginUrl = 'http://localhost:3000/login/error';
 
 router.get(
   '/login/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', { scope: ['profile', 'email', 'phone', 'https://www.googleapis.com/auth/user.phonenumbers.read'] })
 );
 
 // After login or whatever the callback call thiss
@@ -19,6 +18,7 @@ router.get(
     failureMessage: 'Cannot login to Google, please try again later!',
     failureRedirect: errorLoginUrl,
     successRedirect: successLoginUrl,
+    scope: ['profile', 'email', 'phone', 'https://www.googleapis.com/auth/user.phonenumbers.read'],
   }),
   (req, res) => {
     console.log('User: ', req.user);

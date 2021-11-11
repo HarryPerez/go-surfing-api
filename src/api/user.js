@@ -47,11 +47,13 @@ router.get('/auth/user/coaches', async (req, res) => {
 });
 
 router.post('/auth/user/extrainfo', async (req, res) => {
-  const { user, phone, description } = req.body;
+  const {
+    user, phone, description, profile
+  } = req.body;
   const { email } = user;
 
   await User.update(
-    { phone, description },
+    { phone, description, profile },
     { where: { email } }
   );
 
