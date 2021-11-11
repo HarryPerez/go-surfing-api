@@ -30,11 +30,11 @@ const sess = {
   secret: 'secret',
   resave: false,
   maxAge: 24 * 60 * 60 * 1000,
-  cookie: { secure: true }, 
+  cookie: { secure: true },
   saveUninitialized: false
 };
 
-//sess.cookie.sameSite = true; // to help issue with passport.authenticate
+sess.cookie.sameSite = true; // to help issue with passport.authenticate
 sess.cookie.secure = true;
 
 app.use(cookieSession(sess));
