@@ -4,8 +4,8 @@ require('dotenv').config();
 
 const router = express.Router();
 
-const successLoginUrl = `${process.env.UI_URl}/login/success`;
-const errorLoginUrl = `${process.env.UI_URl}/login/error`;
+const successLoginUrl = `${process.env.REACT_FRONTEND_URL}/login/success`;
+const errorLoginUrl = `${process.env.REACT_FRONTEND_URL}/login/error`;
 
 router.get(
   '/login/google',
