@@ -5,6 +5,7 @@ const { isUserAuthenticated } = require('../middlewares/auth');
 const router = express.Router();
 
 router.get('/auth/user', isUserAuthenticated, (req, res) => {
+  console.log('USER IN REQUEST', req);
   res.json(req.user);
 });
 
