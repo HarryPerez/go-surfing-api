@@ -1,10 +1,9 @@
 const express = require('express');
 const User = require('../models/user');
-const { isUserAuthenticated } = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/auth/user', isUserAuthenticated, (req, res) => {
+router.get('/auth/user', (req, res) => {
   res.json(req.user);
 });
 
