@@ -18,7 +18,6 @@ router.get(
     failureMessage: 'Cannot login to Google, please try again later!',
     failureRedirect: errorLoginUrl,
     successRedirect: successLoginUrl,
-    scope: ['profile', 'email', 'phone', 'https://www.googleapis.com/auth/user.phonenumbers.read'],
   }),
   (req, res) => {
     console.log('User: ', req.user);
