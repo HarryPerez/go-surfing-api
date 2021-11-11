@@ -25,15 +25,19 @@ app.use(helmet());
 app.use(cors({ origin: process.env.CORS_ALLOWED_ORIGIN, credentials: true }));
 app.use(express.json());
 
-app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_KEY],
-    sameSite: 'none',
-    secure: false,
-    httpOnly: false
-  })
-);
+// config express-session
+const sess = {
+  secret: 'secret',
+  resave: false,
+  maxAge: 24 * 60 * 60 * 1000,
+  cookie: { secure: true }, 
+  saveUninitialized: false
+};
+
+//sess.cookie.sameSite = true; // to help issue with passport.authenticate
+sess.cookie.secure = true;
+
+app.use(cookieSession(sess));
 
 app.use(passport.initialize());
 app.use(passport.session());
